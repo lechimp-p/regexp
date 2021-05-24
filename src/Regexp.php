@@ -25,32 +25,23 @@ class Regexp
      */
     protected $delim = "%";
 
-    public function __construct($regexp)
+    public function __construct(string $regexp)
     {
-        assert('is_string($regexp)');
         if (@preg_match($this->delim . $regexp . $this->delim, "") === false) {
             throw new \InvalidArgumentException("Invalid regexp '$regexp'");
         }
         $this->regexp = $regexp;
     }
 
-    /**
-     * @return  string
-     */
-    public function raw()
+    public function raw() : string
     {
         return $this->regexp;
     }
 
     /**
      * Match a string with the regexp.
-     *
-     * @param   string      $str
-     * @param   bool        $dotall
-     * @param   array|null  $matches
-     * @return  bool
      */
-    public function match($str, $dotall = false, &$matches = null)
+    public function match(string $str, bool $dotall = false, array &$matches = null) : bool
     {
         if (!$dotall) {
             return preg_match($this->delim . "^" . $this->regexp . '$' . $this->delim, $str, $matches) === 1;
@@ -61,13 +52,8 @@ class Regexp
 
     /**
      * Match the beginning of a string with the regexp.
-     *
-     * @param   string      $str
-     * @param   bool        $dotall
-     * @param   array|null  $matches
-     * @return  bool
      */
-    public function match_beginning($str, $dotall = false, &$matches = null)
+    public function match_beginning(string $str, bool $dotall = false, array &$matches = null)
     {
         if (!$dotall) {
             return preg_match($this->delim . "^" . $this->regexp . $this->delim, $str, $matches) === 1;
@@ -78,13 +64,8 @@ class Regexp
 
     /**
      * Search a string with the regexp.
-     *
-     * @param   string      $str
-     * @param   bool        $dotall
-     * @param   array|null  $matches
-     * @return  bool
      */
-    public function search($str, $dotall = false, &$matches = null)
+    public function search(string $str, bool $dotall = false, array &$matches = null) : bool
     {
         if (!$dotall) {
             return preg_match($this->delim . $this->regexp . $this->delim, $str, $matches) === 1;
