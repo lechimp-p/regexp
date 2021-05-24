@@ -1,6 +1,6 @@
 {
-    "name": "lechimp-p/graph",
-    "description": "An in-memory graph database for and in PHP.",
+    "name": "lechimp-p/regexp",
+    "description": "A basic wrapper around PHP's regexps.",
     "type": "library",
     "license": "GPL-3.0-or-later",
     "authors": [
@@ -13,5 +13,11 @@
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3.0",
         "phpunit/phpunit": "^9.5"
+    },
+    "autoload" : {
+        "psr-4" : { 
+            "Lechimp\\Regexp\\" : "src",
+            "Lechimp\\Regexp\\Tests\\" : "tests"
+        }
     }
 }
