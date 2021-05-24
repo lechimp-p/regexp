@@ -1,0 +1,5 @@
+/vendor/
+*.swp
+*.swo
+.php-cs-fixer.cache
+composer.lock

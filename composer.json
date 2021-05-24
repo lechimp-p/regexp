@@ -1,0 +1,17 @@
+{
+    "name": "lechimp-p/graph",
+    "description": "An in-memory graph database for and in PHP.",
+    "type": "library",
+    "license": "GPL-3.0-or-later",
+    "authors": [
+        {
+            "name": "Richard Klees",
+            "email": "richard.klees@rwth-aachen.de"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.0",
+        "phpunit/phpunit": "^9.5"
+    }
+}
