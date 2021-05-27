@@ -39,7 +39,7 @@ class Regexp
     }
 
     /**
-     * Match a string with the regexp.
+     * Match a complete string with the regexp.
      */
     public function match(string $str, bool $dotall = false, array &$matches = null) : bool
     {
@@ -53,7 +53,7 @@ class Regexp
     /**
      * Match the beginning of a string with the regexp.
      */
-    public function match_beginning(string $str, bool $dotall = false, array &$matches = null)
+    public function matchBeginning(string $str, bool $dotall = false, array &$matches = null)
     {
         if (!$dotall) {
             return preg_match($this->delim . "^" . $this->regexp . $this->delim, $str, $matches) === 1;

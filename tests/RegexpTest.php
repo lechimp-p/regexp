@@ -48,11 +48,11 @@ class RegexpTest extends \PHPUnit\Framework\TestCase
     public function test_match_beginning()
     {
         $re = $this->regexp("ab");
-        $this->assertTrue($re->match_beginning("ab"));
-        $this->assertTrue($re->match_beginning("abc"));
-        $this->assertFalse($re->match_beginning("0abc"));
-        $this->assertFalse($re->match_beginning("0ab"));
-        $this->assertFalse($re->match_beginning("cd"));
+        $this->assertTrue($re->matchBeginning("ab"));
+        $this->assertTrue($re->matchBeginning("abc"));
+        $this->assertFalse($re->matchBeginning("0abc"));
+        $this->assertFalse($re->matchBeginning("0ab"));
+        $this->assertFalse($re->matchBeginning("cd"));
     }
 
     public function test_search()
@@ -74,7 +74,7 @@ class RegexpTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals(["ab", "a", "b"], $matches);
 
         $matches = array();
-        $re->match_beginning("ab", false, $matches);
+        $re->matchBeginning("ab", false, $matches);
         $this->assertEquals(["ab", "a", "b"], $matches);
 
         $matches = array();
@@ -87,11 +87,11 @@ class RegexpTest extends \PHPUnit\Framework\TestCase
         $re = $this->regexp("(a).(b)");
 
         $this->assertFalse($re->match("a\nb"));
-        $this->assertFalse($re->match_beginning("a\nb"));
+        $this->assertFalse($re->matchBeginning("a\nb"));
         $this->assertFalse($re->search("a\nb"));
 
         $this->assertTrue($re->match("a\nb", true));
-        $this->assertTrue($re->match_beginning("a\nb", true));
+        $this->assertTrue($re->matchBeginning("a\nb", true));
         $this->assertTrue($re->search("a\nb", true));
     }
 
@@ -100,7 +100,7 @@ class RegexpTest extends \PHPUnit\Framework\TestCase
         $re = $this->regexp("[\\\\]");
 
         $this->assertTrue($re->match("\\"));
-        $this->assertTrue($re->match_beginning("\\a"));
+        $this->assertTrue($re->matchBeginning("\\a"));
         $this->assertTrue($re->search("a\\b"));
     }
 
@@ -109,7 +109,7 @@ class RegexpTest extends \PHPUnit\Framework\TestCase
         $re = $this->regexp("A[\\\\]B");
 
         $this->assertTrue($re->match("A\\B"));
-        $this->assertTrue($re->match_beginning("A\\Ba"));
+        $this->assertTrue($re->matchBeginning("A\\Ba"));
         $this->assertTrue($re->search("aA\\Bb"));
     }
 }
