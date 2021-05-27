@@ -9,10 +9,14 @@ build:
     environment:
         php:
             version: '8.0'
+            pecl_extensions:
+                - xdebug
+            ini:
+                xdebug.mode: coverage
     tests:
         override:
             -
-                command: './run_tests.sh --coverage-clover=coverage-file'
+                command: './run_tests.sh --coverage-filter=src --coverage-clover=coverage-file'
                 coverage:
                     file: 'coverage-file'
                     format: 'clover'
